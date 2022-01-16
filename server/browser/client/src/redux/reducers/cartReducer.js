@@ -18,9 +18,9 @@ export const cartReducer = (state = {cartItems: []}, action)=>{
 
         // ...  modified.....................
         case actionTypes.CHANGE_COUNT:
-            const temp = state.cartItems.find(product=> product.id === action.payload.id);
-            const remaining = state.cartItems.filter(product => product.id !== temp.id);
-            return {...state, cartItems: [...remaining, {...temp, count: temp.count+action.payload.count}]}
+            const temp = state.cartItems.map(product=> product.id === action.payload.id?{...product,count: product.count += action.payload.count} :product);
+       
+            return {...state,cartItems:temp}
 
 
         //...............................    

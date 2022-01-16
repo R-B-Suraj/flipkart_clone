@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // const url = 'http://localhost:8000';
 // backend url , but this is for local machine not for production, there we need to use heroku's url
-const url = '';
+const url = 'http://localhost:8000';
 
 export const authenticateSignup = async(user)=>{
     try{

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // const url = 'http://localhost:8000';
 // not for production
-const url = '';
+const url = 'http://localhost:8000';
 
 export const addToCart = (id) => async (dispatch)=> {
     try {

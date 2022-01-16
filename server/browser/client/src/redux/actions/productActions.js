@@ -4,12 +4,12 @@ import * as actionTypes from '../constants/productConstant';
 
 
 // const url = 'http://localhost:8000';
-
+const url = 'http://localhost:8000';
 
 
 export const getProducts = ()=> async (dispatch)=>{
     try{
-        const {data} = await axios.get(`/products`);
+        const {data} = await axios.get(`${url}/products`);
         // dispatch always calls the reducer which matches the values that we dispatched 
         dispatch({
             type: actionTypes.GET_PRODUCT_SUCCESS,
@@ -27,7 +27,7 @@ export const getProducts = ()=> async (dispatch)=>{
 
 export const getProductDetails = (id)=> async (dispatch)=>{
     try{
-        const {data} = await  axios.get(`/product/${id}`);
+        const {data} = await  axios.get(`${url}/product/${id}`);
         dispatch({
             type: actionTypes.GET_PRODUCT_DETAIL_SUCCESS,
             payload: data
