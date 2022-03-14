@@ -84,6 +84,14 @@ import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import {v4 as uuid} from 'uuid';
+import path from 'path';
+import {fileURLToPath} from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+
+// 👇️ "/home/john/Desktop/javascript"
+const __dirname = path.dirname(__filename);
+console.log('directory-name', __dirname);
 
 // components
 import Connection from './database/db.js';
@@ -122,18 +130,9 @@ Connection(process.env.MONGODB_URI || URL);
 // we are telling heroku to run the front end along with the backend.
 // in heroku NODE_ENV is production while deployed.... and browser can't understand react/jsx etc..
 // we need to convert it to build(javascript).. in package.json client we can find the build script
-if(process.env.NODE_ENV == 'production'){
-    app.use(express.static('browser/client/build'));
-}
-
-
-
-
-
-
-
-
-
+// if(process.env.NODE_ENV == 'production' ){
+//     app.use(express.static(path.join(__dirname, 'client/build')));
+// }
 
 
 
@@ -143,6 +142,9 @@ app.listen(PORT, ()=>console.log(`server is listening at port  ${PORT}`));
 
 // send data to database after connections is established
 DefaultData();
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+
 
 export let paytmMerchantKey = process.env.PAYTM_MERCHANT_KEY;
 export let paytmParams= {};
@@ -158,5 +160,5 @@ paytmParams['ORDER_ID'] = uuid();
 paytmParams['TXN_AMOUNT'] = '100';
 // IN CALLBACK URL THE WHOLE checkSum is validated  
 paytmParams['CALL_BACK_URL'] = 'http://localhost:8000/callback';
-paytmParams['EMAIL'] = 'rb.surajiskanha@gmail.com';
-paytmParams['MOBILE_NO'] = '9337840594';
+paytmParams['EMAIL'] = 'radgadfg@gmail.com';
+paytmParams['MOBILE_NO'] = '9337750594';

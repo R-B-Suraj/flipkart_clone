@@ -14,6 +14,7 @@ const DefaultData = async ()=>{
         console.log('Data imported successfully');
     }catch(error){
         console.log("Error :  ", error.message);
+        
     }
 }
 
